@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.appointments.demo.com/scehdule"
+           targetNamespace="http://www.appointments.demo.com/scehdule" elementFormDefault="qualified">
+
+    <xs:element name="scheduleRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rule" type="tns:rule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="scheduleResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="schedule" type="tns:rule"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="rule">
+        <xs:sequence>
+            <xs:element name="start_date" type="xs:dateTime"/>
+            <xs:element name="end_date" type="xs:dateTime"/>
+            <xs:element name="doctor_id" type="xs:string" minOccurs="0" nillable="true"/>
+            <xs:element name="doctor_specialization" type="xs:string"/>
+            <!-- appointment_duration in minutes -->
+            <xs:element name="appointment_duration" type="xs:int"/>
+            <xs:element name="slots_amount" type="xs:int" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="schedule">
+        <xs:sequence>
+            <xs:element name="slot" type="tns:slot" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="slot">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="doctor_specialization" type="xs:string"/>
+            <xs:element name="doctor_id" type="xs:string"/>
+            <xs:element name="start_time" type="xs:dateTime"/>
+            <xs:element name="end_time" type="xs:dateTime"/>
+            <!-- duration in minutes -->
+            <xs:element name="duration" type="xs:int"/>
+            <xs:element name="patient_id" type="xs:string" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
