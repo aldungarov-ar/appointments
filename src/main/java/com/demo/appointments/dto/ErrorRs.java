@@ -10,6 +10,7 @@ public class ErrorRs {
     private String errorMessage;
     private Timestamp timestamp;
 
+    @SuppressWarnings("unused")
     public ErrorRs() {
         this.timestamp = new Timestamp(System.currentTimeMillis());
     }

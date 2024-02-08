@@ -37,13 +37,4 @@ public class Doctor {
 
     @Column(name = "grade")
     private String grade;
-
-    public String getFullName() {
-
-        if (middleName == null || middleName.isEmpty()) {
-            return String.format("%s %s", firstName, lastName);
-        }
-
-        return String.format("%s %s %s", firstName, middleName, lastName);
-    }
 }

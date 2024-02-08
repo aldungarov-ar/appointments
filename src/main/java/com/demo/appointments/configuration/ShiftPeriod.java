@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Locale;
 
@@ -29,9 +28,6 @@ public class ShiftPeriod {
     private String nightShiftStarts;
     @Value("${shifts.night.ends}")
     private String nightShiftEnds;
-
-
-    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
     public LocalTime getShiftStartTime(String period) {
         return switch (period.toUpperCase(Locale.ROOT)) {
