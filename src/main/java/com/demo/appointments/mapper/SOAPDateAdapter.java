@@ -5,6 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class SOAPDateAdapter {
 
+    private SOAPDateAdapter() {
+    }
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
     public static LocalDate unmarshal(String v) {

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class AppointmentsRq {
 
-        private String date;
-        private Long doctorId;
-        private String specialization;
+    private String date;
+    private Long doctorId;
+    private String specialization;
 }

@@ -8,18 +8,14 @@
 
 package com.demo.appointments.generated_soap_dto.schedule;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -31,12 +27,10 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "rule"
+        "rule"
 })
 @XmlRootElement(name = "scheduleRequest")
 public class ScheduleRequest {
@@ -46,11 +40,9 @@ public class ScheduleRequest {
 
     /**
      * Gets the value of the rule property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Rule }
-     *     
+     *
+     * @return possible object is
+     * {@link Rule }
      */
     public Rule getRule() {
         return rule;
@@ -58,11 +50,9 @@ public class ScheduleRequest {
 
     /**
      * Sets the value of the rule property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Rule }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link Rule }
      */
     public void setRule(Rule value) {
         this.rule = value;

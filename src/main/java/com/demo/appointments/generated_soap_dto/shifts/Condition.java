@@ -8,24 +8,20 @@
 
 package com.demo.appointments.generated_soap_dto.shifts;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3._2001.xmlschema.Adapter3;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 /**
  * <p>Java class for condition complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="condition"&gt;
  *   &lt;complexContent&gt;
@@ -42,28 +38,26 @@ import org.w3._2001.xmlschema.Adapter3;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "condition", propOrder = {
-    "doctorId",
-    "startDate",
-    "endDate",
-    "period",
-    "timeStart",
-    "timeEnd"
+        "doctorId",
+        "startDate",
+        "endDate",
+        "period",
+        "timeStart",
+        "timeEnd"
 })
 public class Condition {
 
     @XmlElement(name = "doctor_id")
     protected long doctorId;
     @XmlElement(name = "start_date", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter3.class)
     @XmlSchemaType(name = "date")
     protected LocalDate startDate;
     @XmlElement(name = "end_date", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter3.class)
     @XmlSchemaType(name = "date")
     protected LocalDate endDate;
     @XmlElement(required = true)
@@ -75,7 +69,6 @@ public class Condition {
 
     /**
      * Gets the value of the doctorId property.
-     * 
      */
     public long getDoctorId() {
         return doctorId;
@@ -83,7 +76,6 @@ public class Condition {
 
     /**
      * Sets the value of the doctorId property.
-     * 
      */
     public void setDoctorId(long value) {
         this.doctorId = value;
@@ -91,11 +83,9 @@ public class Condition {
 
     /**
      * Gets the value of the startDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDate getStartDate() {
         return startDate;
@@ -103,11 +93,9 @@ public class Condition {
 
     /**
      * Sets the value of the startDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setStartDate(LocalDate value) {
         this.startDate = value;
@@ -115,11 +103,9 @@ public class Condition {
 
     /**
      * Gets the value of the endDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDate getEndDate() {
         return endDate;
@@ -127,11 +113,9 @@ public class Condition {
 
     /**
      * Sets the value of the endDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEndDate(LocalDate value) {
         this.endDate = value;
@@ -139,11 +123,9 @@ public class Condition {
 
     /**
      * Gets the value of the period property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPeriod() {
         return period;
@@ -151,11 +133,9 @@ public class Condition {
 
     /**
      * Sets the value of the period property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPeriod(String value) {
         this.period = value;
@@ -163,11 +143,9 @@ public class Condition {
 
     /**
      * Gets the value of the timeStart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
      */
     public JAXBElement<LocalTime> getTimeStart() {
         return timeStart;
@@ -175,11 +153,9 @@ public class Condition {
 
     /**
      * Sets the value of the timeStart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
      */
     public void setTimeStart(JAXBElement<LocalTime> value) {
         this.timeStart = value;
@@ -187,11 +163,9 @@ public class Condition {
 
     /**
      * Gets the value of the timeEnd property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
      */
     public JAXBElement<LocalTime> getTimeEnd() {
         return timeEnd;
@@ -199,11 +173,9 @@ public class Condition {
 
     /**
      * Sets the value of the timeEnd property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link LocalTime }{@code >}
      */
     public void setTimeEnd(JAXBElement<LocalTime> value) {
         this.timeEnd = value;

@@ -8,23 +8,20 @@
 
 package com.demo.appointments.generated_soap_dto.shifts;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3._2001.xmlschema.Adapter2;
 import org.w3._2001.xmlschema.Adapter3;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 /**
  * <p>Java class for shiftElement complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="shiftElement"&gt;
  *   &lt;complexContent&gt;
@@ -41,17 +38,15 @@ import org.w3._2001.xmlschema.Adapter3;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "shiftElement", propOrder = {
-    "id",
-    "doctorId",
-    "date",
-    "startTime",
-    "endTime",
-    "period"
+        "id",
+        "doctorId",
+        "date",
+        "startTime",
+        "endTime",
+        "period"
 })
 public class ShiftElement {
 
@@ -59,15 +54,15 @@ public class ShiftElement {
     @XmlElement(name = "doctor_id")
     protected long doctorId;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter3.class)
     @XmlSchemaType(name = "date")
     protected LocalDate date;
     @XmlElement(name = "start_time", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter2.class)
     @XmlSchemaType(name = "time")
     protected LocalTime startTime;
     @XmlElement(name = "end_time", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter2.class)
     @XmlSchemaType(name = "time")
     protected LocalTime endTime;
     @XmlElement(required = true)
@@ -75,7 +70,6 @@ public class ShiftElement {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public long getId() {
         return id;
@@ -83,7 +77,6 @@ public class ShiftElement {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(long value) {
         this.id = value;
@@ -91,7 +84,6 @@ public class ShiftElement {
 
     /**
      * Gets the value of the doctorId property.
-     * 
      */
     public long getDoctorId() {
         return doctorId;
@@ -99,7 +91,6 @@ public class ShiftElement {
 
     /**
      * Sets the value of the doctorId property.
-     * 
      */
     public void setDoctorId(long value) {
         this.doctorId = value;
@@ -107,11 +98,9 @@ public class ShiftElement {
 
     /**
      * Gets the value of the date property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDate getDate() {
         return date;
@@ -119,11 +108,9 @@ public class ShiftElement {
 
     /**
      * Sets the value of the date property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDate(LocalDate value) {
         this.date = value;
@@ -131,11 +118,9 @@ public class ShiftElement {
 
     /**
      * Gets the value of the startTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalTime getStartTime() {
         return startTime;
@@ -143,11 +128,9 @@ public class ShiftElement {
 
     /**
      * Sets the value of the startTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setStartTime(LocalTime value) {
         this.startTime = value;
@@ -155,11 +138,9 @@ public class ShiftElement {
 
     /**
      * Gets the value of the endTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalTime getEndTime() {
         return endTime;
@@ -167,11 +148,9 @@ public class ShiftElement {
 
     /**
      * Sets the value of the endTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEndTime(LocalTime value) {
         this.endTime = value;
@@ -179,11 +158,9 @@ public class ShiftElement {
 
     /**
      * Gets the value of the period property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getPeriod() {
         return period;
@@ -191,11 +168,9 @@ public class ShiftElement {
 
     /**
      * Sets the value of the period property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setPeriod(String value) {
         this.period = value;

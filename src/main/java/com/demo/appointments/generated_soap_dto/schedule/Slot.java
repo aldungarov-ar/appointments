@@ -8,25 +8,21 @@
 
 package com.demo.appointments.generated_soap_dto.schedule;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3._2001.xmlschema.Adapter1;
 import org.w3._2001.xmlschema.Adapter2;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 
 /**
  * <p>Java class for slot complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="slot"&gt;
  *   &lt;complexContent&gt;
@@ -45,25 +41,23 @@ import org.w3._2001.xmlschema.Adapter2;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "slot", propOrder = {
-    "id",
-    "date",
-    "doctorSpecialization",
-    "doctorId",
-    "startTime",
-    "endTime",
-    "duration",
-    "patientId"
+        "id",
+        "date",
+        "doctorSpecialization",
+        "doctorId",
+        "startTime",
+        "endTime",
+        "duration",
+        "patientId"
 })
 public class Slot {
 
     protected long id;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected LocalDateTime date;
     @XmlElement(name = "doctor_specialization", required = true)
@@ -71,11 +65,11 @@ public class Slot {
     @XmlElement(name = "doctor_id")
     protected long doctorId;
     @XmlElement(name = "start_time", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter2.class)
     @XmlSchemaType(name = "time")
     protected LocalTime startTime;
     @XmlElement(name = "end_time", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter2.class)
     @XmlSchemaType(name = "time")
     protected LocalTime endTime;
     protected int duration;
@@ -84,7 +78,6 @@ public class Slot {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public long getId() {
         return id;
@@ -92,7 +85,6 @@ public class Slot {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(long value) {
         this.id = value;
@@ -100,11 +92,9 @@ public class Slot {
 
     /**
      * Gets the value of the date property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDateTime getDate() {
         return date;
@@ -112,11 +102,9 @@ public class Slot {
 
     /**
      * Sets the value of the date property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDate(LocalDateTime value) {
         this.date = value;
@@ -124,11 +112,9 @@ public class Slot {
 
     /**
      * Gets the value of the doctorSpecialization property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDoctorSpecialization() {
         return doctorSpecialization;
@@ -136,11 +122,9 @@ public class Slot {
 
     /**
      * Sets the value of the doctorSpecialization property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDoctorSpecialization(String value) {
         this.doctorSpecialization = value;
@@ -148,7 +132,6 @@ public class Slot {
 
     /**
      * Gets the value of the doctorId property.
-     * 
      */
     public long getDoctorId() {
         return doctorId;
@@ -156,7 +139,6 @@ public class Slot {
 
     /**
      * Sets the value of the doctorId property.
-     * 
      */
     public void setDoctorId(long value) {
         this.doctorId = value;
@@ -164,11 +146,9 @@ public class Slot {
 
     /**
      * Gets the value of the startTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalTime getStartTime() {
         return startTime;
@@ -176,11 +156,9 @@ public class Slot {
 
     /**
      * Sets the value of the startTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setStartTime(LocalTime value) {
         this.startTime = value;
@@ -188,11 +166,9 @@ public class Slot {
 
     /**
      * Gets the value of the endTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalTime getEndTime() {
         return endTime;
@@ -200,11 +176,9 @@ public class Slot {
 
     /**
      * Sets the value of the endTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEndTime(LocalTime value) {
         this.endTime = value;
@@ -212,7 +186,6 @@ public class Slot {
 
     /**
      * Gets the value of the duration property.
-     * 
      */
     public int getDuration() {
         return duration;
@@ -220,7 +193,6 @@ public class Slot {
 
     /**
      * Sets the value of the duration property.
-     * 
      */
     public void setDuration(int value) {
         this.duration = value;
@@ -228,11 +200,9 @@ public class Slot {
 
     /**
      * Gets the value of the patientId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     public JAXBElement<Long> getPatientId() {
         return patientId;
@@ -240,11 +210,9 @@ public class Slot {
 
     /**
      * Sets the value of the patientId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     public void setPatientId(JAXBElement<Long> value) {
         this.patientId = value;

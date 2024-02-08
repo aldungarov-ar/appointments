@@ -8,25 +8,25 @@
 
 package com.demo.appointments.generated_soap_dto.schedule;
 
-import javax.xml.namespace.QName;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
 
+import javax.xml.namespace.QName;
+
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the com.demo.appointments.generated_soap_dto.schedule package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the com.demo.appointments.generated_soap_dto.schedule package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -38,14 +38,12 @@ public class ObjectFactory {
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.demo.appointments.generated_soap_dto.schedule
-     * 
      */
     public ObjectFactory() {
     }
 
     /**
      * Create an instance of {@link ScheduleRequest }
-     * 
      */
     public ScheduleRequest createScheduleRequest() {
         return new ScheduleRequest();
@@ -53,7 +51,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Rule }
-     * 
      */
     public Rule createRule() {
         return new Rule();
@@ -61,7 +58,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link ScheduleResponse }
-     * 
      */
     public ScheduleResponse createScheduleResponse() {
         return new ScheduleResponse();
@@ -69,7 +65,6 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link Slot }
-     * 
      */
     public Slot createSlot() {
         return new Slot();
@@ -77,11 +72,9 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *
+     * @param value Java instance representing xml element's value.
+     * @return the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", name = "patient_id", scope = Slot.class)
     public JAXBElement<Long> createSlotPatientId(Long value) {
@@ -90,11 +83,9 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *
+     * @param value Java instance representing xml element's value.
+     * @return the new instance of {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", name = "doctor_id", scope = Rule.class)
     public JAXBElement<Long> createRuleDoctorId(Long value) {
@@ -103,11 +94,9 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *
+     * @param value Java instance representing xml element's value.
+     * @return the new instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", name = "appointment_duration", scope = Rule.class)
     public JAXBElement<Integer> createRuleAppointmentDuration(Integer value) {
@@ -116,11 +105,9 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *
+     * @param value Java instance representing xml element's value.
+     * @return the new instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     @XmlElementDecl(namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", name = "slots_amount", scope = Rule.class)
     public JAXBElement<Integer> createRuleSlotsAmount(Integer value) {

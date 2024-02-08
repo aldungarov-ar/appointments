@@ -1,7 +1,6 @@
 package com.demo.appointments.service;
 
 import com.demo.appointments.entity.Shift;
-import com.demo.appointments.generated_soap_dto.schedule.ScheduleResponse;
 import com.demo.appointments.generated_soap_dto.shifts.ShiftRequest;
 import com.demo.appointments.generated_soap_dto.shifts.ShiftResponse;
 

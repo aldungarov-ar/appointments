@@ -13,6 +13,7 @@ public class ErrorRs {
     public ErrorRs() {
         this.timestamp = new Timestamp(System.currentTimeMillis());
     }
+
     public ErrorRs(Exception exception) {
         this.errorMessage = exception.getMessage();
         this.timestamp = new Timestamp(System.currentTimeMillis());

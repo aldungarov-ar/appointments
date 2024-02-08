@@ -8,23 +8,19 @@
 
 package com.demo.appointments.generated_soap_dto.schedule;
 
-import java.time.LocalDateTime;
 import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.w3._2001.xmlschema.Adapter1;
+
+import java.time.LocalDateTime;
 
 
 /**
  * <p>Java class for rule complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="rule"&gt;
  *   &lt;complexContent&gt;
@@ -41,26 +37,24 @@ import org.w3._2001.xmlschema.Adapter1;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "rule", propOrder = {
-    "startDate",
-    "endDate",
-    "doctorId",
-    "doctorSpecialization",
-    "appointmentDuration",
-    "slotsAmount"
+        "startDate",
+        "endDate",
+        "doctorId",
+        "doctorSpecialization",
+        "appointmentDuration",
+        "slotsAmount"
 })
 public class Rule {
 
     @XmlElement(name = "start_date", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected LocalDateTime startDate;
     @XmlElement(name = "end_date", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected LocalDateTime endDate;
     @XmlElementRef(name = "doctor_id", namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", type = JAXBElement.class, required = false)
@@ -74,11 +68,9 @@ public class Rule {
 
     /**
      * Gets the value of the startDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDateTime getStartDate() {
         return startDate;
@@ -86,11 +78,9 @@ public class Rule {
 
     /**
      * Sets the value of the startDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setStartDate(LocalDateTime value) {
         this.startDate = value;
@@ -98,11 +88,9 @@ public class Rule {
 
     /**
      * Gets the value of the endDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public LocalDateTime getEndDate() {
         return endDate;
@@ -110,11 +98,9 @@ public class Rule {
 
     /**
      * Sets the value of the endDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setEndDate(LocalDateTime value) {
         this.endDate = value;
@@ -122,11 +108,9 @@ public class Rule {
 
     /**
      * Gets the value of the doctorId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     public JAXBElement<Long> getDoctorId() {
         return doctorId;
@@ -134,11 +118,9 @@ public class Rule {
 
     /**
      * Sets the value of the doctorId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link Long }{@code >}
      */
     public void setDoctorId(JAXBElement<Long> value) {
         this.doctorId = value;
@@ -146,11 +128,9 @@ public class Rule {
 
     /**
      * Gets the value of the doctorSpecialization property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getDoctorSpecialization() {
         return doctorSpecialization;
@@ -158,11 +138,9 @@ public class Rule {
 
     /**
      * Sets the value of the doctorSpecialization property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setDoctorSpecialization(String value) {
         this.doctorSpecialization = value;
@@ -170,11 +148,9 @@ public class Rule {
 
     /**
      * Gets the value of the appointmentDuration property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     public JAXBElement<Integer> getAppointmentDuration() {
         return appointmentDuration;
@@ -182,11 +158,9 @@ public class Rule {
 
     /**
      * Sets the value of the appointmentDuration property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     public void setAppointmentDuration(JAXBElement<Integer> value) {
         this.appointmentDuration = value;
@@ -194,11 +168,9 @@ public class Rule {
 
     /**
      * Gets the value of the slotsAmount property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
+     *
+     * @return possible object is
+     * {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     public JAXBElement<Integer> getSlotsAmount() {
         return slotsAmount;
@@ -206,11 +178,9 @@ public class Rule {
 
     /**
      * Sets the value of the slotsAmount property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
-     *     
+     *
+     * @param value allowed object is
+     *              {@link JAXBElement }{@code <}{@link Integer }{@code >}
      */
     public void setSlotsAmount(JAXBElement<Integer> value) {
         this.slotsAmount = value;

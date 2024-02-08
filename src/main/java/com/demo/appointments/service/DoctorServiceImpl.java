@@ -15,11 +15,6 @@ public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorRepository doctorRepository;
 
-    /*@Override
-    public boolean doctorExists(Long id) {
-        return doctorRepository.findById(id).isPresent();
-    }*/
-
     @Override
     public List<Doctor> getDoctorsBySpecializationName(String specializationName) {
         List<Doctor> doctors = doctorRepository.findBySpecialization_NameIgnoreCase(specializationName);

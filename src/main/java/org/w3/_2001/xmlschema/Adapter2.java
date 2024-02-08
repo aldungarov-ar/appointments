@@ -8,12 +8,12 @@
 
 package org.w3._2001.xmlschema;
 
-import java.time.LocalTime;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
+import java.time.LocalTime;
+
 public class Adapter2
-    extends XmlAdapter<String, LocalTime>
-{
+        extends XmlAdapter<String, LocalTime> {
 
 
     public LocalTime unmarshal(String value) {
