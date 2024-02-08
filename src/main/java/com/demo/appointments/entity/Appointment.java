@@ -1,15 +1,18 @@
 package com.demo.appointments.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointments")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,20 +22,23 @@ public class Appointment {
     @Column(name = "doctor_id", nullable = false)
     private Long doctorId;
 
-    @Column(name = "patient_id", nullable = false)
+    @Column(name = "patient_id")
     private Long patientId;
 
     @Column(name = "start_time", nullable = false)
-    private Time startTime;
+    private LocalTime startTime;
 
     @Column(name = "end_time", nullable = false)
-    private Time endTime;
+    private LocalTime endTime;
 
     // duration in minutes
     @Column(name = "duration", nullable = false)
-    private int duration;
+    private Integer duration;
 
-    @Column(name = "first_time", nullable = false)
+    @Column(name = "shift_id", nullable = false)
+    private Long shiftId;
+
+    @Column(name = "first_time")
     private Boolean firstTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,7 +1,7 @@
 package com.demo.appointments.service;
 
 import com.demo.appointments.entity.Appointment;
-import com.demo.appointments.entity.AppointmentRepository;
+import com.demo.appointments.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +25,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     public Appointment getAppointmentWithinPeriod(List<Appointment> existingAppointments,
                                                   LocalTime appointmentStartTime, LocalTime appointmentEndTime) {
         for (Appointment appointment : existingAppointments) {
-            LocalTime existingAppointmentStartTime = appointment.getStartTime().toLocalTime();
-            LocalTime existingAppointmentEndTime = appointment.getEndTime().toLocalTime();
+            LocalTime existingAppointmentStartTime = appointment.getStartTime();
+            LocalTime existingAppointmentEndTime = appointment.getEndTime();
 
             boolean newAppointmentStartTimeIsInExistingSlot =
                     appointmentStartTime.isAfter(existingAppointmentStartTime) &&

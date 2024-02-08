@@ -1,7 +1,6 @@
 package com.demo.appointments.service;
 
 import com.demo.appointments.entity.Appointment;
-import com.demo.appointments.entity.AppointmentRepository;
 import com.demo.appointments.entity.Doctor;
 import com.demo.appointments.entity.Shift;
 import com.demo.appointments.exception.BadRequestException;
@@ -13,12 +12,11 @@ import com.demo.appointments.generated_soap_dto.schedule.ScheduleRequest;
 import com.demo.appointments.generated_soap_dto.schedule.ScheduleResponse;
 import com.demo.appointments.generated_soap_dto.schedule.Slot;
 import com.demo.appointments.mapper.AppointmentMapper;
+import com.demo.appointments.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -42,11 +40,10 @@ public class ScheduleServiceImpl implements ScheduleService {
         Rule rule = request.getRule();
         validateRule(rule);
 
-        LocalDateTime startDate = convertToDate(rule.getStartDate());
-        LocalDateTime endDate = convertToDate(rule.getEndDate());
+        LocalDateTime startDate = rule.getStartDate();
+        LocalDateTime endDate = rule.getEndDate();
         String doctorSpecialization = rule.getDoctorSpecialization();
-        Integer appointmentDuration = calculateAppointmentDuration(
-                rule.getAppointmentDuration().getValue(), doctorSpecialization);
+        Integer appointmentDuration = calculateAppointmentDuration(rule.getAppointmentDuration().getValue(), doctorSpecialization);
         Integer slotsAmount = rule.getSlotsAmount().getValue();
         long doctorId = rule.getDoctorId() != null ? rule.getDoctorId().getValue() : -1L;
 
@@ -55,9 +52,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             throw new ScheduleDatesException("No available working days for the given period");
         }
 
-        List<Doctor> doctorsWithSpecialization = doctorId < 0 ?
-                doctorService.getDoctorsBySpecializationName(doctorSpecialization) :
-                List.of(doctorService.getDoctorById(doctorId));
+        List<Doctor> doctorsWithSpecialization = doctorId < 0 ? doctorService.getDoctorsBySpecializationName(doctorSpecialization) : List.of(doctorService.getDoctorById(doctorId));
         if (doctorsWithSpecialization == null || doctorsWithSpecialization.isEmpty()) {
             throw new DoctorNotFoundException("No doctors with " + doctorSpecialization + " specialization found");
         }
@@ -69,8 +64,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         List<Appointment> createdAppointments = new ArrayList<>();
         for (Shift shift : availableShifts) {
-            List<Appointment> shiftAppointments = createAppointmentsForShift(shift, appointmentDuration);
+            List<Appointment> shiftAppointments = createAppointmentsForShift(shift, appointmentDuration, slotsAmount);
             createdAppointments.addAll(shiftAppointments);
+
+            if (createdAppointments.size() >= slotsAmount) {
+                break;
+            }
+            slotsAmount--;
         }
         if (createdAppointments.size() < slotsAmount) {
             throw new NotEnoughShiftsExceptions("Not enough shifts to generate the required amount of slots");
@@ -92,7 +92,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         if (rule.getStartDate() == null || rule.getEndDate() == null) {
             missingFields.append("Start and end dates must be provided").append("\n");
         }
-        if (rule.getStartDate().compare(rule.getEndDate()) > 0) {
+        if (rule.getStartDate().isAfter(rule.getEndDate())) {
             missingFields.append("Start date must be before end date").append("\n");
         }
         if (rule.getDoctorSpecialization() == null || rule.getDoctorSpecialization().isEmpty()) {
@@ -104,11 +104,8 @@ public class ScheduleServiceImpl implements ScheduleService {
             missingFields.append("Doctor id must be a positive number").append("\n");
         } else {
             Doctor doctor = doctorService.getDoctorById(rule.getDoctorId().getValue());
-            if (doctor.getSpecialization().getName().equalsIgnoreCase(rule.getDoctorSpecialization())) {
-                missingFields.append("Doctor with id ")
-                        .append(rule.getDoctorId().getValue())
-                        .append(" does not have ").append(rule.getDoctorSpecialization())
-                        .append(" specialization").append("\n");
+            if (!doctor.getSpecialization().getName().equalsIgnoreCase(rule.getDoctorSpecialization())) {
+                missingFields.append("Doctor with id ").append(rule.getDoctorId().getValue()).append(" does not have ").append(rule.getDoctorSpecialization()).append(" specialization").append("\n");
             }
         }
         if (rule.getSlotsAmount() == null || rule.getSlotsAmount().getValue() <= 0) {
@@ -142,8 +139,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return dates;
     }
 
-    private List<Shift> findDoctorsShiftsInPeriod(List<Doctor> doctors, LocalDateTime startDate,
-                                                  LocalDateTime endDate) {
+    private List<Shift> findDoctorsShiftsInPeriod(List<Doctor> doctors, LocalDateTime startDate, LocalDateTime endDate) {
         if (doctors == null || doctors.isEmpty()) {
             throw new DoctorNotFoundException("No doctors provided");
         }
@@ -158,41 +154,61 @@ public class ScheduleServiceImpl implements ScheduleService {
         return availableShifts;
     }
 
-    private List<Appointment> createAppointmentsForShift(Shift shift, Integer appointmentDuration) {
-        LocalTime shiftTimeStart = shift.getTimeStart().toLocalTime();
-        LocalTime shiftTimeEnd = shift.getTimeEnd().toLocalTime();
+    private List<Appointment> createAppointmentsForShift(
+            Shift shift, Integer appointmentDuration, Integer slotsAmount) {
+        LocalTime shiftTimeStart = shift.getStartTime();
+        LocalTime shiftTimeEnd = shift.getEndTime();
 
-        List<Appointment> existingAppointments = appointmentService
-                .getAppointmentsByShiftId(shift.getId());
+        List<Appointment> existingAppointments = appointmentService.getAppointmentsByShiftId(shift.getId());
 
         List<Appointment> appointmentsForShift = new ArrayList<>();
         LocalTime appointmentStartTime = shiftTimeStart;
         LocalTime appointmentEndTime = appointmentStartTime.plusMinutes(appointmentDuration);
 
-        while (appointmentEndTime.isBefore(shiftTimeEnd)) {
-            Appointment existingAppointment = appointmentService.getAppointmentWithinPeriod(
-                    existingAppointments, appointmentStartTime, appointmentEndTime);
-            if (existingAppointment == null) {
-                Appointment appointment = new Appointment();
-                appointment.setDoctorId(shift.getDoctorId());
-                appointment.setStartTime(Time.valueOf(appointmentStartTime));
-                appointment.setEndTime(Time.valueOf(appointmentEndTime));
-                appointment.setDuration(appointmentDuration);
-                appointment.setShift(shift);
+        while (appointmentEndTime.isBefore(shiftTimeEnd) && slotsAmount-- > 0) {
+            removeExistingAppointmentsWithinPeriod(existingAppointments, appointmentStartTime, appointmentEndTime);
 
-                appointmentRepository.save(appointment);
+            Appointment appointment = Appointment.builder()
+                    .doctorId(shift.getDoctorId())
+                    .startTime(appointmentStartTime)
+                    .endTime(appointmentEndTime)
+                    .duration(appointmentDuration)
+                    .shift(shift)
+                    .shiftId(shift.getId())
+                    .firstTime(true)
+                    .build();
 
-                appointmentsForShift.add(appointment);
+            appointmentRepository.save(appointment);
+            appointmentsForShift.add(appointment);
 
-                appointmentStartTime = appointmentStartTime.plusMinutes(appointmentDuration);
-            } else {
-                appointmentStartTime = existingAppointment.getEndTime().toLocalTime();
-            }
-
+            appointmentStartTime = appointmentStartTime.plusMinutes(appointmentDuration);
             appointmentEndTime = appointmentStartTime.plusMinutes(appointmentDuration);
         }
 
         return appointmentsForShift;
+    }
+
+    private void removeExistingAppointmentsWithinPeriod(
+            List<Appointment> existingAppointments, LocalTime appointmentStartTime, LocalTime appointmentEndTime) {
+
+        List<Appointment> appointmentsToRemove = new ArrayList<>();
+        for (Appointment existingAppointment : existingAppointments) {
+            boolean appointmentTimeEquals = existingAppointment.getStartTime().equals(appointmentStartTime) ||
+                    existingAppointment.getEndTime().equals(appointmentEndTime);
+            boolean appointmentStartOverlap = existingAppointment.getStartTime().isAfter(appointmentStartTime) &&
+                    existingAppointment.getStartTime().isBefore(appointmentEndTime);
+            boolean appointmentEndOverlap = existingAppointment.getEndTime().isBefore(appointmentEndTime) &&
+                    existingAppointment.getEndTime().isAfter(appointmentStartTime);
+            boolean appointmentInside = existingAppointment.getStartTime().isBefore(appointmentStartTime) &&
+                    existingAppointment.getEndTime().isAfter(appointmentEndTime);
+
+            if (appointmentTimeEquals || appointmentStartOverlap || appointmentEndOverlap || appointmentInside) {
+                appointmentRepository.delete(existingAppointment);
+                appointmentsToRemove.add(existingAppointment);
+            }
+        }
+
+        existingAppointments.removeAll(appointmentsToRemove);
     }
 
     private List<Slot> convertAppointmentsToSlots(List<Appointment> createdAppointments) {
@@ -203,12 +219,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return slots;
     }
 
-    private LocalDateTime convertToDate(XMLGregorianCalendar date) {
-        return LocalDateTime.of(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute());
-    }
-
     private boolean isHoliday(LocalDateTime date) {
-        // TODO: additional holidays like New Year, May 9th, etc. should be added
         return date.getDayOfWeek().getValue() > 5;
     }
 }

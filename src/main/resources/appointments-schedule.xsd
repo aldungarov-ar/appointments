@@ -35,11 +35,11 @@
     <xs:complexType name="slot">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
-            <xs:element name="date" type="xs:date"/>
+            <xs:element name="date" type="xs:dateTime"/>
             <xs:element name="doctor_specialization" type="xs:string"/>
             <xs:element name="doctor_id" type="xs:long"/>
-            <xs:element name="start_time" type="xs:dateTime"/>
-            <xs:element name="end_time" type="xs:dateTime"/>
+            <xs:element name="start_time" type="xs:time"/>
+            <xs:element name="end_time" type="xs:time"/>
             <!-- duration in minutes -->
             <xs:element name="duration" type="xs:int"/>
             <xs:element name="patient_id" type="xs:long" minOccurs="0" nillable="true"/>

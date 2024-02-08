@@ -1,5 +1,5 @@
 databaseChangeLog:
   - include:
-      file: classpath:/db/changelog/changes/001-initial-schema-09.sql
+      file: classpath:/db/changelog/changes/001-initial-schema-11.sql
   - include:
-      file: classpath:/db/changelog/changes/002-test-data-05.sql
+      file: classpath:/db/changelog/changes/002-test-data-06.sql

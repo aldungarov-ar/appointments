@@ -13,12 +13,10 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @RequiredArgsConstructor
 public class ScheduleEndpoint {
 
-    private ScheduleService scheduleService;
+    private final ScheduleService scheduleService;
+    private static final String NAMESPACE_URI = "http://www.appointments.demo.com/generated_soap_dto/schedule";
 
-    //TODO check URI
-    private static final String NAMESPACE_URI = "com.demo.appointments.generated_soap_dto";
-
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "schedule.ScheduleRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "scheduleRequest")
     @ResponsePayload
     public ScheduleResponse generateSchedule(@RequestPayload ScheduleRequest request) {
         return scheduleService.generateSchedule(request);

@@ -6,40 +6,36 @@
 //
 
 
-package com.demo.appointments.generated_soap_dto.schedule;
+package com.demo.appointments.generated_soap_dto.shifts;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementRef;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.w3._2001.xmlschema.Adapter1;
 import org.w3._2001.xmlschema.Adapter2;
+import org.w3._2001.xmlschema.Adapter3;
 
 
 /**
- * <p>Java class for slot complex type.
+ * <p>Java class for shiftElement complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="slot"&gt;
+ * &lt;complexType name="shiftElement"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
- *         &lt;element name="doctor_specialization" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="doctor_id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="start_time" type="{http://www.w3.org/2001/XMLSchema}time"/&gt;
  *         &lt;element name="end_time" type="{http://www.w3.org/2001/XMLSchema}time"/&gt;
- *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="patient_id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="period" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,27 +45,23 @@ import org.w3._2001.xmlschema.Adapter2;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "slot", propOrder = {
+@XmlType(name = "shiftElement", propOrder = {
     "id",
-    "date",
-    "doctorSpecialization",
     "doctorId",
+    "date",
     "startTime",
     "endTime",
-    "duration",
-    "patientId"
+    "period"
 })
-public class Slot {
+public class ShiftElement {
 
     protected long id;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "dateTime")
-    protected LocalDateTime date;
-    @XmlElement(name = "doctor_specialization", required = true)
-    protected String doctorSpecialization;
     @XmlElement(name = "doctor_id")
     protected long doctorId;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlSchemaType(name = "date")
+    protected LocalDate date;
     @XmlElement(name = "start_time", required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "time")
@@ -78,9 +70,8 @@ public class Slot {
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "time")
     protected LocalTime endTime;
-    protected int duration;
-    @XmlElementRef(name = "patient_id", namespace = "http://www.appointments.demo.com/generated_soap_dto/schedule", type = JAXBElement.class, required = false)
-    protected JAXBElement<Long> patientId;
+    @XmlElement(required = true)
+    protected String period;
 
     /**
      * Gets the value of the id property.
@@ -99,54 +90,6 @@ public class Slot {
     }
 
     /**
-     * Gets the value of the date property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    /**
-     * Sets the value of the date property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDate(LocalDateTime value) {
-        this.date = value;
-    }
-
-    /**
-     * Gets the value of the doctorSpecialization property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDoctorSpecialization() {
-        return doctorSpecialization;
-    }
-
-    /**
-     * Sets the value of the doctorSpecialization property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDoctorSpecialization(String value) {
-        this.doctorSpecialization = value;
-    }
-
-    /**
      * Gets the value of the doctorId property.
      * 
      */
@@ -160,6 +103,30 @@ public class Slot {
      */
     public void setDoctorId(long value) {
         this.doctorId = value;
+    }
+
+    /**
+     * Gets the value of the date property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public LocalDate getDate() {
+        return date;
+    }
+
+    /**
+     * Sets the value of the date property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDate(LocalDate value) {
+        this.date = value;
     }
 
     /**
@@ -211,43 +178,27 @@ public class Slot {
     }
 
     /**
-     * Gets the value of the duration property.
-     * 
-     */
-    public int getDuration() {
-        return duration;
-    }
-
-    /**
-     * Sets the value of the duration property.
-     * 
-     */
-    public void setDuration(int value) {
-        this.duration = value;
-    }
-
-    /**
-     * Gets the value of the patientId property.
+     * Gets the value of the period property.
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *     {@link String }
      *     
      */
-    public JAXBElement<Long> getPatientId() {
-        return patientId;
+    public String getPeriod() {
+        return period;
     }
 
     /**
-     * Sets the value of the patientId property.
+     * Sets the value of the period property.
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
+     *     {@link String }
      *     
      */
-    public void setPatientId(JAXBElement<Long> value) {
-        this.patientId = value;
+    public void setPeriod(String value) {
+        this.period = value;
     }
 
 }

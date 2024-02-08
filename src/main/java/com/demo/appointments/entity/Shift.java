@@ -1,16 +1,18 @@
 package com.demo.appointments.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "shifts")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +20,16 @@ public class Shift {
     private Long id;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(name = "period", nullable = false, length = 50)
     private String period;
 
     @Column(name = "time_start")
-    private Time timeStart;
+    private LocalTime startTime;
 
     @Column(name = "time_end")
-    private Time timeEnd;
+    private LocalTime endTime;
 
     @Column(name = "doctor_id", nullable = false)
     private Long doctorId;
