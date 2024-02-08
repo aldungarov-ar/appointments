@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "doctors")
+@Table(name = "patients")
 @Getter
 @Setter
 public class Patient {
@@ -30,9 +31,8 @@ public class Patient {
     @Column(name = "middle_name")
     private String middleName;
 
-    // TODO check if date deserialize correctly
     @Column(name = "birth_date")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "gender")
     private Character gender;

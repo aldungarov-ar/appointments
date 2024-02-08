@@ -1,5 +1,6 @@
 package com.demo.appointments.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,6 +47,7 @@ public class Appointment {
             insertable = false,
             updatable = false,
             foreignKey = @ForeignKey(name = "FK_appointment_doctor"))
+    @JsonIgnore
     private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,6 +55,7 @@ public class Appointment {
             insertable = false,
             updatable = false,
             foreignKey = @ForeignKey(name = "FK_appointment_patient"))
+    @JsonIgnore
     private Patient patient;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -60,5 +63,6 @@ public class Appointment {
             insertable = false,
             updatable = false,
             foreignKey = @ForeignKey(name = "FK_appointment_shift"))
+    @JsonIgnore
     private Shift shift;
 }

@@ -1,5 +1,6 @@
 package com.demo.appointments.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Table(name = "doctors")
 @Getter
 @Setter
+@JsonSerialize()
 public class Doctor {
 
     @Id
