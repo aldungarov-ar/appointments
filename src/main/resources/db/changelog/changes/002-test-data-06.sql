@@ -15,4 +15,3 @@
         (0, 'f47ac10b-58cc-4372-a567-0e02b2c3d479', 'John', 'Doe', 'Allen', 1, 'A'),
         (1, '550e8400-e29b-41d4-a716-446655440000', 'Jane', 'Smith', 'Beth', 2, 'B'),
         (2, 'c9b1db4a-c3ac-446b-9e6c-7d8ac4a4f3a5', 'Emily', 'Johnson', 'Claire', 0, 'C');
-

@@ -1,11 +1,11 @@
 package com.demo.appointments.controller;
 
-import com.demo.appointments.dto.AppointmentsRq;
-import com.demo.appointments.dto.AssignRq;
-import com.demo.appointments.dto.CommonRs;
-import com.demo.appointments.dto.PatientAppointmentsRq;
+import com.demo.appointments.dto.*;
 import com.demo.appointments.entity.Appointment;
 import com.demo.appointments.service.SlotService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/slots")
 @RequiredArgsConstructor
+@ApiResponse(responseCode = "400", description = "Bad request",
+        content = @Content(schema = @Schema(implementation = ErrorRs.class)))
 public class SlotController {
 
     private final SlotService slotService;
