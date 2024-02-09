@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.appointments.demo.com/generated_soap_dto/shifts"
+           targetNamespace="http://www.appointments.demo.com/generated_soap_dto/shifts"
+           elementFormDefault="qualified">
+
+    <xs:element name="shiftRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="condition" type="tns:condition"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="shiftResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="shifts" type="tns:shiftElement" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="condition">
+        <xs:sequence>
+            <xs:element name="doctor_id" type="xs:long"/>
+            <xs:element name="start_date" type="xs:date"/>
+            <xs:element name="end_date" type="xs:date"/>
+            <xs:element name="period" type="xs:string"/>
+            <xs:element name="time_start" type="xs:time" minOccurs="0" nillable="true"/>
+            <xs:element name="time_end" type="xs:time" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="shiftElement">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="doctor_id" type="xs:long"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="start_time" type="xs:time"/>
+            <xs:element name="end_time" type="xs:time"/>
+            <xs:element name="period" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

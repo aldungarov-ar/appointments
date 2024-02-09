@@ -1,0 +1,19 @@
+<jxb:bindings version="3.0"
+              xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Customizing data types -->
+    <jxb:globalBindings>
+        <jxb:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime"
+                      parseMethod="com.demo.appointments.mapper.SOAPDateTimeAdapter.unmarshal"
+                      printMethod="com.demo.appointments.mapper.SOAPDateTimeAdapter.marshal"/>
+        <jxb:javaType name="java.time.LocalTime" xmlType="xs:time"
+                      parseMethod="com.demo.appointments.mapper.SOAPTimeAdapter.unmarshal"
+                      printMethod="com.demo.appointments.mapper.SOAPTimeAdapter.marshal"/>
+        <jxb:javaType name="java.time.LocalDate" xmlType="xs:date"
+                      parseMethod="com.demo.appointments.mapper.SOAPDateAdapter.unmarshal"
+                      printMethod="com.demo.appointments.mapper.SOAPDateAdapter.marshal"/>
+    </jxb:globalBindings>
+
+
+</jxb:bindings>

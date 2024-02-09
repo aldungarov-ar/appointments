@@ -1,0 +1,28 @@
+services:
+
+  db:
+    image: postgres:latest
+    container_name: postgresql
+    hostname: postgresql
+    restart: on-failure
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres_appointments
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+  appoinments:
+    container_name: app_container
+    build:
+      dockerfile: Dockerfile
+    image: application.jar
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres_appointments
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
